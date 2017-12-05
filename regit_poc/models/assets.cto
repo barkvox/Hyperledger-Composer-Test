@@ -1,0 +1,14 @@
+namespace regit.assets
+
+import regit.business.Financial
+import regit.business.Business
+import regit.independent.Independent
+import regit.regulator.Regulator
+
+asset FinancialAsset identified by assetId {
+  o String assetId
+  o Financial financial
+  --> Business business
+  --> Independent independent optional
+  --> Regulator regulator optional
+}

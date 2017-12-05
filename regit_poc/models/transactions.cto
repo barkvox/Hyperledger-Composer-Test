@@ -1,0 +1,18 @@
+
+
+namespace regit.transactions
+
+
+abstract transaction MemberTransaction {
+    o String memberId    
+}
+
+transaction AuthorizeAccess extends MemberTransaction {
+}
+
+transaction RevokeAccess extends MemberTransaction {
+}
+
+event MemberEvent {
+    o MemberTransaction memberTransaction
+}

@@ -4,15 +4,13 @@
 
 namespace regit.business
 
-
-import regit.base.Address
 import regit.individual.Individual
 import regit.independent.Independent
 import regit.regulator.Regulator
+import regit.base.Address
+import regit.base.Member
 
-
-participant Business identified by email{
-  o String email
+participant Business extends Member{
   o String businessName
   o String industry
 }
@@ -38,9 +36,6 @@ asset FinancialAsset identified by assetId {
   --> Independent independent optional
   --> Regulator regulator optional
 }
-
-
-
 
 //Education
 concept Education {

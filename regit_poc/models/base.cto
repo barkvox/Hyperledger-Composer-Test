@@ -22,20 +22,13 @@ enum Relationship {
 /**
  * A concept for Contact details
  */
-concept ContactDetails {
-  o String email  optional
+ concept ContactDetails {
   o String mobilePhone  optional
   o String homePhone optional
-  o Address address optional
+  o String email
+
 }
-concept BirthDetails {
-  o DateTime dateOfBirth optional
-  o String placeOfBirth optional
-}
-concept DeathDetails {
-  o DateTime dateOfDeath optional
-  o String placeOfDeath optional
-}
+
 /**
  * A concept for a simple street address
  */
@@ -60,13 +53,13 @@ concept Basic {
   o DateTime dob
   o Gender gender optional
   o Address adress optional
-  o String[] nationalities optional
-  o ContactDetails contactDetails optional
-  o BirthDetails birthDetails optional
-  o DeathDetails deathDetails optional
+
+
 }
 
-abstract participant Member identified by email{
-  o String email
+abstract participant Member identified by memberId{
   o String memberId
+  o Address address optional
+  o String[] authorized optional
+  o ContactDetails contactDetails
 }

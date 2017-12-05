@@ -5,10 +5,8 @@
 namespace regit.regulator
 
 
-import regit.base.Address
-import regit.individual.Individual
-import regit.business.Business
+import regit.base.Member
 
-participant Regulator identified by email {
-  o String email
+participant Regulator extends Member{
+
 }
