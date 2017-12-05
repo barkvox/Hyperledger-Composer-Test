@@ -1,0 +1,22 @@
+{
+  "name": "regit",
+  "version": "0.0.1",
+  "description": "this is a poc for regit using hyperledger composer",
+  "scripts": {
+    "test": "mocha --recursive"
+  },
+  "author": "joshua",
+  "email": "joshua@futurify.vn",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "composer-admin": "latest",
+    "composer-client": "latest",
+    "composer-common": "latest",
+    "composer-connector-embedded": "latest",
+    "chai": "latest",
+    "eslint": "latest",
+    "istanbul": "latest",
+    "mkdirp": "latest",
+    "mocha": "latest"
+  }
+}

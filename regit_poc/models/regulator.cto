@@ -1,0 +1,14 @@
+/**
+ * New model file
+ */
+
+namespace regit.regulator
+
+
+import regit.base.Address
+import regit.individual.Individual
+import regit.business.Business
+
+participant Regulator identified by email {
+  o String email
+}

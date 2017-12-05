@@ -1,0 +1,16 @@
+/**
+ * New model file
+ */
+
+namespace regit.individual
+
+import regit.base.Member
+import regit.base.Basic
+
+
+
+
+participant Individual extends Member{
+  o Basic basic
+}
+

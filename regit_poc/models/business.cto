@@ -1,0 +1,55 @@
+/**
+ * New model file
+ */
+
+namespace regit.business
+
+
+import regit.base.Address
+import regit.individual.Individual
+import regit.independent.Independent
+import regit.regulator.Regulator
+
+
+participant Business identified by email{
+  o String email
+  o String businessName
+  o String industry
+}
+
+//Financial 
+enum FinType {
+  o BANKCARD
+  o BANKACCOUNT
+  o INVESTMENT
+  o INSURANCE
+}
+
+concept Financial {
+  o FinType fintype
+  o String description
+  --> Individual customer
+}
+
+asset FinancialAsset identified by assetId {
+  o String assetId
+  o Financial financial
+  --> Business business
+  --> Independent independent optional
+  --> Regulator regulator optional
+}
+
+
+
+
+//Education
+concept Education {
+  --> Individual student
+  o String description
+  o String major
+  o String minor optional
+  o String certificationType
+  o String grade optional
+  o String certificateNumber
+  o DateTime graduatedDate
+}

@@ -1,0 +1,18 @@
+/**
+ * New model file
+ */
+
+namespace regit.independent
+
+import regit.base.Member
+
+
+
+
+participant Independent extends Member{
+
+}
+
+
+
+
