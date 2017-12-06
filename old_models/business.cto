@@ -29,14 +29,6 @@ concept Financial {
   --> Individual customer
 }
 
-asset FinancialAsset identified by assetId {
-  o String assetId
-  o Financial financial
-  --> Business business
-  --> Independent independent optional
-  --> Regulator regulator optional
-}
-
 //Education
 concept Education {
   --> Individual student

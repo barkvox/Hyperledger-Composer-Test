@@ -1,8 +1,4 @@
-/**
- * New model file
- */
-
-namespace regit.base
+namespace regit.vault
 
 enum Title {
   o MR
@@ -19,16 +15,7 @@ enum Relationship {
   o SINGLE
   o MARRIED
 }
-/**
- * A concept for Contact details
- */
- concept ContactDetails {
-  o String mobilePhone  optional
-  o String homePhone optional
-  o String email
-
-}
-
++
 /**
  * A concept for a simple street address
  */
@@ -43,7 +30,6 @@ concept Address {
   o String postalCode optional
   o String postOfficeBoxNumber optional
 }
-
 concept Basic {
   o Title title 
   o String firstName 
@@ -52,14 +38,25 @@ concept Basic {
   o String alias optional
   o DateTime dob
   o Gender gender optional
-  o Address adress optional
-
-
 }
-
-abstract participant Member identified by memberId{
-  o String memberId
-  o Address address optional
-  o String[] authorized optional
-  o ContactDetails contactDetails
+//Financial 
+enum FinType {
+  o BANKCARD
+  o BANKACCOUNT
+  o INVESTMENT
+  o INSURANCE
+}
+concept Financial {
+  o FinType fintype
+  o String description
+}
+//Education
+concept Education {
+  o String description
+  o String major
+  o String minor optional
+  o String certificationType
+  o String grade optional
+  o String certificateNumber
+  o DateTime graduatedDate
 }

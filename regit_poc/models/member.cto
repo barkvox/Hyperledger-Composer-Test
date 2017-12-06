@@ -1,0 +1,21 @@
+
+namespace regit.member
+
+import regit.vault.Address
+import regit.vault.ContactDetails
+import regit.vault.Basic
+
+abstract participant Member identified by memberId{
+  o String memberId
+  o Address address optional
+  o String[] authorized optional
+  o ContactDetails contactDetails
+}
+
+participant Individual extends Member{
+  o Basic basic
+}
+participant Business extends Member{
+  o String businessName
+  o String industry
+}
