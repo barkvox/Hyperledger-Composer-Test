@@ -1,21 +1,21 @@
-/**
- * New model file
- */
+// /**
+//  * New model file
+//  */
 
-namespace regit.individual
+// namespace regit.individual
 
-import regit.base.Basic
-
-
-abstract participant Member identified by memberId{
-  o String memberId
-  o Address address optional
-  o String[] authorized optional
-  o ContactDetails contactDetails
-}
+// import regit.base.Basic
 
 
-participant Individual extends Member{
-  o Basic basic
-}
+// abstract participant Member identified by memberId{
+//   o String memberId
+//   o Address address optional
+//   o String[] authorized optional
+//   o ContactDetails contactDetails
+// }
+
+
+// participant Individual extends Member{
+//   o Basic basic
+// }
 

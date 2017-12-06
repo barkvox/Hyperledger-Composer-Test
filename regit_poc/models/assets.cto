@@ -1,10 +1,10 @@
 namespace regit.assets
 
-import regit.business.Financial
-import regit.business.Education 
-import regit.business.Business
-import regit.independent.Independent
-import regit.regulator.Regulator
+import regit.vault.Financial
+import regit.vault.Education 
+import regit.member.Business
+import regit.member.Independent
+import regit.member.Regulator
 
 asset FinancialAsset identified by assetId {
   o String assetId

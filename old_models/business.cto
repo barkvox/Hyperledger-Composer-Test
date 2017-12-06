@@ -1,42 +1,41 @@
-/**
- * New model file
- */
+// /**
+//  * New model file
+//  */
+ namespace regit.business
 
-namespace regit.business
+// import regit.individual.Individual
+// import regit.independent.Independent
+// import regit.regulator.Regulator
+// import regit.base.Address
+// import regit.base.Member
 
-import regit.individual.Individual
-import regit.independent.Independent
-import regit.regulator.Regulator
-import regit.base.Address
-import regit.base.Member
+// participant Business extends Member{
+//   o String businessName
+//   o String industry
+// }
 
-participant Business extends Member{
-  o String businessName
-  o String industry
-}
+// //Financial 
+// enum FinType {
+//   o BANKCARD
+//   o BANKACCOUNT
+//   o INVESTMENT
+//   o INSURANCE
+// }
 
-//Financial 
-enum FinType {
-  o BANKCARD
-  o BANKACCOUNT
-  o INVESTMENT
-  o INSURANCE
-}
+// concept Financial {
+//   o FinType fintype
+//   o String description
+//   --> Individual customer
+// }
 
-concept Financial {
-  o FinType fintype
-  o String description
-  --> Individual customer
-}
-
-//Education
-concept Education {
-  --> Individual student
-  o String description
-  o String major
-  o String minor optional
-  o String certificationType
-  o String grade optional
-  o String certificateNumber
-  o DateTime graduatedDate
-}
+// //Education
+// concept Education {
+//   --> Individual student
+//   o String description
+//   o String major
+//   o String minor optional
+//   o String certificationType
+//   o String grade optional
+//   o String certificateNumber
+//   o DateTime graduatedDate
+// }

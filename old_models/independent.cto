@@ -1,17 +1,17 @@
-/**
- * New model file
- */
+// /**
+//  * New model file
+//  */
 
-namespace regit.independent
+// namespace regit.independent
 
-import regit.base.Member
-
-
+// import regit.base.Member
 
 
-participant Independent extends Member{
 
-}
+
+// participant Independent extends Member{
+
+// }
 
 
 

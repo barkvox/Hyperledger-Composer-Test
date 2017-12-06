@@ -15,7 +15,21 @@ enum Relationship {
   o SINGLE
   o MARRIED
 }
-+
+concept Basic {
+  o Title title 
+  o String firstName 
+  o String middleName optional
+  o String lastName
+  o String alias optional
+  o DateTime dob
+  o Gender gender optional
+}
+
+ concept ContactDetails {
+  o String mobilePhone  optional
+  o String homePhone optional
+  o String email
+}
 /**
  * A concept for a simple street address
  */
@@ -30,15 +44,7 @@ concept Address {
   o String postalCode optional
   o String postOfficeBoxNumber optional
 }
-concept Basic {
-  o Title title 
-  o String firstName 
-  o String middleName optional
-  o String lastName
-  o String alias optional
-  o DateTime dob
-  o Gender gender optional
-}
+
 //Financial 
 enum FinType {
   o BANKCARD
