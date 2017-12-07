@@ -88,3 +88,17 @@ function revokeAccess(revoke) {
         });
     }
 }
+
+/**
+ * A Member grants access to their record to another Member.
+ * @param {regit.transactions.Request} request - the authorize to be processed
+ * @transaction
+ */
+ // Transaction Create Request
+
+ /**
+ * A Member grants access to their record to another Member.
+ * @param {regit.transactions.Request} request - the authorize to be processed
+ * @transaction
+ */
+ // Transaction Accept Request

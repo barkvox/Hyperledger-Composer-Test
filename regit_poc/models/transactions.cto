@@ -2,6 +2,9 @@
 
 namespace regit.transactions
 
+import regit.assets.DocumentAsset
+import regit.member.Business
+import regit.member.Individual
 
 abstract transaction MemberTransaction {
     o String memberId    
@@ -15,4 +18,15 @@ transaction RevokeAccess extends MemberTransaction {
 
 event MemberEvent {
     o MemberTransaction memberTransaction
+}
+
+asset Request identified by date {
+  o String date   
+  o String fieldName
+ --> Business creator
+ --> Individual assignee
+}
+transaction AcceptRequest {
+    --> Request request
+    --> DocumentAsset information
 }

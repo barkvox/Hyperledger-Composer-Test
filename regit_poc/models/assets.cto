@@ -2,22 +2,30 @@ namespace regit.assets
 
 import regit.vault.Financial
 import regit.vault.Education 
+import regit.vault.Basic
 import regit.member.Business
 import regit.member.Independent
 import regit.member.Regulator
+import regit.member.Individual
 
-asset FinancialAsset identified by assetId {
+
+abstract asset DocumentAsset identified by assetId {
   o String assetId
-  o Financial financial
-  --> Business business
+  --> Individual owner
+  --> Business viewer
   --> Independent independent optional
   --> Regulator regulator optional
 }
 
-asset EducationAsset identified by assetId {
-  o String assetId
+asset BasicAsset extends DocumentAsset{
+  o Basic basic
+
+}
+asset FinancialAsset  extends DocumentAsset{
+  o Financial financial
+
+}
+asset EducationAsset  extends DocumentAsset{
   o Education education
-  --> Business business
-  --> Independent independent optional
-  --> Regulator regulator optional
+
 }

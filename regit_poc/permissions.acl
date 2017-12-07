@@ -23,18 +23,18 @@ rule RevokeAccessTransaction {
 
 rule OwnRecordFullAccess {
     description: "Allow all participants full access to their own record"
-    participant(p): "regit.base.Member"
+    participant(p): "regit.member.Member"
     operation: ALL
-    resource(r): "regit.base.Member"
+    resource(r): "regit.member.Member"
     condition: (r.getIdentifier() === p.getIdentifier())
     action: ALLOW
 }
 
 rule ForeignRecordConditionalAccess {
     description: "Allow participants access to other people's records if granted"
-    participant(p): "regit.base.Member"
+    participant(p): "regit.member.Member"
     operation: ALL
-    resource(r): "regit.base.Member"
+    resource(r): "regit.member.Member"
     condition: (r.authorized && r.authorized.indexOf(p.getIdentifier()) > -1)
     action: ALLOW
 }
