@@ -3,6 +3,7 @@ namespace regit.assets
 import regit.vault.Financial
 import regit.vault.Education 
 import regit.vault.Basic
+import regit.vault.Passport 
 import regit.member.Business
 import regit.member.Independent
 import regit.member.Regulator
@@ -16,16 +17,15 @@ abstract asset DocumentAsset identified by assetId {
   --> Independent independent optional
   --> Regulator regulator optional
 }
-
 asset BasicAsset extends DocumentAsset{
   o Basic basic
-
 }
 asset FinancialAsset  extends DocumentAsset{
   o Financial financial
-
 }
 asset EducationAsset  extends DocumentAsset{
   o Education education
-
+}
+asset PassportAsset extends DocumentAsset {
+  o Passport passport
 }

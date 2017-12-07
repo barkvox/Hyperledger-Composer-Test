@@ -1,7 +1,12 @@
 namespace regit.vault
-
-
-
+//Information
+concept Information {
+  o Basic basic
+  o ContactDetails contact 
+  o Financial financial 
+  o Education education 
+  o Passport passport 
+}
 enum Title {
   o MR
   o MRS
@@ -65,4 +70,14 @@ concept Education {
   o String grade optional
   o String certificateNumber
   o DateTime graduatedDate
+}
+//Identification
+abstract concept Identification {
+  o  Basic basic 
+}
+//Passport 
+concept Passport extends Identification{
+  o String passportNumber
+  o DateTime expiryDate
+  o DateTime issueDate
 }

@@ -4,7 +4,72 @@
  * own record. A member can access another member's details if the member has
  * added them to their authorized list.
  */
+/**
+ * Access control rules for tutorial-network
+ */
+ rule denyAccessRequestIfNotCreatorOrAssignee {
+    description: "deny access Request if not creator or Assignee"
+    participant(p): "regit.member.Member"
+    operation: ALL  
+    resource(r): "regit.transactions.Request"
+    condition: (r.creator.getIdentifier() != p.getIdentifier()&&r.assignee.getIdentifier() != p.getIdentifier())
+    action: DENY
+}
 
+rule userCanOnlyAccessTheirHistory {
+    description: "user can only access their info"
+    participant(p): "regit.member.Member"
+    operation: ALL  
+    resource(r): "org.hyperledger.composer.system.HistorianRecord"
+    condition: (r.participantInvoking.getIdentifier() != p.getIdentifier())
+    action: DENY
+}
+
+rule SharedAllowAccessForOwner {
+    description: "deny read if not owner and not viewer of information"
+    participant(p): "regit.member.Member"
+    operation: READ  
+    resource(r): "regit.transactions.SharedInformation"
+    condition: (r.owner.getIdentifier() != p.getIdentifier()&&r.viewer.getIdentifier() != p.getIdentifier())
+    action: DENY
+}
+
+rule SharedAllowUpdateDeleteForOwner {
+    description: "deny update, delete if not owner"
+    participant(p): "regit.member.Member"
+    operation: UPDATE, DELETE  
+    resource(r): "regit.transactions.SharedInformation"
+    condition: (r.owner.getIdentifier() != p.getIdentifier())
+    action: DENY
+}
+
+rule AllowAccessForOwner {
+    description: "deny read if not owner and not viewer of information"
+    participant(p): "regit.member.Member"
+    operation: READ  
+    resource(r): "regit.vault.*"
+    condition: (r.owner.getIdentifier() != p.getIdentifier()&&r.viewer.getIdentifier() != p.getIdentifier())
+    action: DENY
+}
+
+rule AllowUpdateDeleteForOwner {
+    description: "deny update, delete if not owner"
+    participant(p): "regit.member.Member"
+    operation: UPDATE, DELETE  
+    resource(r): "regit.vault.Information"
+    condition: (r.owner.getIdentifier() != p.getIdentifier())
+    action: DENY
+}
+
+rule Default {
+    description: "Allow all participants access to all resources"
+    participant: "ANY"
+    operation: ALL
+    resource: "regit.vault.*"
+    action: ALLOW
+}
+
+//JOSHUA PERMISSIONS
 rule AuthorizeAccessTransaction {
     description: "Allow all participants to submit AuthorizeAccess transactions"
     participant: "ANY"

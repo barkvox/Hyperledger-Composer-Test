@@ -20,6 +20,14 @@ event MemberEvent {
     o MemberTransaction memberTransaction
 }
 
+asset SharedInformation identified by date {
+   	o String date   
+    o String id   
+    o String sharedValue
+    --> Individual owner
+    --> Business viewer
+}
+
 asset Request identified by date {
   o String date   
   o String fieldName
@@ -30,3 +38,4 @@ transaction AcceptRequest {
     --> Request request
     --> DocumentAsset information
 }
+
