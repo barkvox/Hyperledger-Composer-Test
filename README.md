@@ -1,2 +1,1 @@
-# regit
-regit poc
+# org.regit.network
