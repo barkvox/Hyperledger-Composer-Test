@@ -1,5 +1,6 @@
 namespace regit.transactions
 
+import regit.member.Member
 import regit.member.Business
 import regit.member.Individual
 import regit.assets.DocumentAsset
@@ -22,33 +23,34 @@ asset SharedInformation identified by date {
    	o String date   
     o String id   
     o String sharedValue
-    --> Individual owner
-    --> Business viewer
+    --> Member owner
+    --> Member viewer
 }
 
 asset Request identified by date {
-  o String date   
-  o DocumentAsset document
- --> Business creator
- --> Individual assignee
+   	o String date   
+    o String fieldName
+    --> Member creator
+    --> Member assignee
 }
+
 transaction AcceptRequest {
     --> Request request
+    --> DocumentAsset document
+}
+transaction Trade {
+  o String fieldName  
+    --> DocumentAsset document
+    --> Member newViewer
 }
 
-enum RequestType {
-  o BASIC
-  o FINANCIAL
-  o EDUCATION
-  o PASSPORT
-}
-transaction RequestInformation {
-  o String date   
-  o RequestType type
- --> Business creator
- --> Individual assignee
+event TradeNotification {
+    --> DocumentAsset document
 }
 
-event RequestInformationEvent {
-  o String detail
+transaction RemoveHighQuantityInformations {
+}
+
+event RemoveNotification {
+    --> DocumentAsset document
 }

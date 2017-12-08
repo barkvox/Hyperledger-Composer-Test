@@ -24,7 +24,7 @@ rule userCanOnlyAccessTheirHistory {
     condition: (r.participantInvoking.getIdentifier() != p.getIdentifier())
     action: DENY
 }
-/*
+
 rule SharedAllowAccessForOwner {
     description: "deny read if not owner and not viewer of information"
     participant(p): "regit.member.Member"
@@ -76,7 +76,7 @@ rule NetworkAdminSystem {
     resource: "org.hyperledger.composer.system.**"
     action: ALLOW
 }
-*/
+
 
 /**
  * Access control rules for tutorial-network
