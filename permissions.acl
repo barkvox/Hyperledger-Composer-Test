@@ -7,14 +7,14 @@
 /**
  * Access control rules for tutorial-network
  */
- rule denyAccessRequestIfNotCreatorOrAssignee {
+ rule denyAccessDocumentAssetIfNotCreatorOrAssignee {
     description: "deny access Request if not creator or Assignee"
     participant(p): "regit.member.Member"
     operation: ALL  
-    resource(r): "regit.transactions.Request"
-    condition: (r.creator.getIdentifier() != p.getIdentifier()&&r.assignee.getIdentifier() != p.getIdentifier())
+    resource(r): "regit.assets.DocumentAsset"
+    condition: (r.owner.getIdentifier() != p.getIdentifier()&&r.viewer.getIdentifier() != p.getIdentifier())
     action: DENY
-}
+ }
 
 rule userCanOnlyAccessTheirHistory {
     description: "user can only access their info"
@@ -24,7 +24,7 @@ rule userCanOnlyAccessTheirHistory {
     condition: (r.participantInvoking.getIdentifier() != p.getIdentifier())
     action: DENY
 }
-
+/*
 rule SharedAllowAccessForOwner {
     description: "deny read if not owner and not viewer of information"
     participant(p): "regit.member.Member"
@@ -61,57 +61,6 @@ rule AllowUpdateDeleteForOwner {
     action: DENY
 }
 
-rule Default {
-    description: "Allow all participants access to all resources"
-    participant: "ANY"
-    operation: ALL
-    resource: "regit.vault.*"
-    action: ALLOW
-}
-
-//JOSHUA PERMISSIONS
-rule AuthorizeAccessTransaction {
-    description: "Allow all participants to submit AuthorizeAccess transactions"
-    participant: "ANY"
-    operation: CREATE
-    resource: "regit.transactions.AuthorizeAccess"
-    action: ALLOW
-}
-
-rule RevokeAccessTransaction {
-    description: "Allow all participants to submit RevokeAccess transactions"
-    participant: "ANY"
-    operation: CREATE
-    resource: "regit.transactions.RevokeAccess"
-    action: ALLOW
-}
-
-rule OwnRecordFullAccess {
-    description: "Allow all participants full access to their own record"
-    participant(p): "regit.member.Member"
-    operation: ALL
-    resource(r): "regit.member.Member"
-    condition: (r.getIdentifier() === p.getIdentifier())
-    action: ALLOW
-}
-
-rule ForeignRecordConditionalAccess {
-    description: "Allow participants access to other people's records if granted"
-    participant(p): "regit.member.Member"
-    operation: ALL
-    resource(r): "regit.member.Member"
-    condition: (r.authorized && r.authorized.indexOf(p.getIdentifier()) > -1)
-    action: ALLOW
-}
-
-rule SystemACL {
-  description:  "System ACL to permit all access"
-  participant: "org.hyperledger.composer.system.Participant"
-  operation: ALL
-  resource: "org.hyperledger.composer.system.**"
-  action: ALLOW
-}
-
 rule NetworkAdminUser {
     description: "Grant business network administrators full access to user resources"
     participant: "org.hyperledger.composer.system.NetworkAdmin"
@@ -126,4 +75,24 @@ rule NetworkAdminSystem {
     operation: ALL
     resource: "org.hyperledger.composer.system.**"
     action: ALLOW
+}
+*/
+
+/**
+ * Access control rules for tutorial-network
+ */
+rule Default {
+    description: "Allow all participants access to all resources"
+    participant: "ANY"
+    operation: ALL
+    resource: "regit.**"
+    action: ALLOW
+}
+
+rule SystemACL {
+  description:  "System ACL to permit all access"
+  participant: "ANY"
+  operation: ALL
+  resource: "org.hyperledger.composer.system.**"
+  action: ALLOW
 }

@@ -7,13 +7,13 @@ import regit.vault.Passport
 import regit.member.Business
 import regit.member.Independent
 import regit.member.Regulator
-import regit.member.Individual
+import regit.member.Member
 
 
 abstract asset DocumentAsset identified by assetId {
   o String assetId
-  --> Individual owner
-  --> Business viewer
+  --> Member owner
+  --> Member viewer
   --> Independent independent optional
   --> Regulator regulator optional
 }

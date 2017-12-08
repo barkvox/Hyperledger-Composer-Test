@@ -1,8 +1,8 @@
 namespace regit.transactions
 
-import regit.assets.DocumentAsset
 import regit.member.Business
 import regit.member.Individual
+import regit.assets.DocumentAsset
 
 abstract transaction MemberTransaction {
     o String memberId    
@@ -28,12 +28,27 @@ asset SharedInformation identified by date {
 
 asset Request identified by date {
   o String date   
-  o String fieldName
+  o DocumentAsset document
  --> Business creator
  --> Individual assignee
 }
 transaction AcceptRequest {
     --> Request request
-    --> DocumentAsset information
 }
 
+enum RequestType {
+  o BASIC
+  o FINANCIAL
+  o EDUCATION
+  o PASSPORT
+}
+transaction RequestInformation {
+  o String date   
+  o RequestType type
+ --> Business creator
+ --> Individual assignee
+}
+
+event RequestInformationEvent {
+  o String detail
+}

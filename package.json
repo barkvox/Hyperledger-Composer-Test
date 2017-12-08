@@ -1,6 +1,6 @@
 {
   "name": "regit",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "this is a poc for regit using hyperledger composer",
   "scripts": {
     "test": "mocha --recursive"

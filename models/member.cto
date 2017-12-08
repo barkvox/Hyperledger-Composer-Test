@@ -12,14 +12,13 @@ abstract participant Member identified by memberId{
 }
 
 participant Individual extends Member{
-  o Basic basic
+  o String name
 }
 participant Business extends Member{
   o String businessName
   o String industry
 }
 participant Independent extends Member{
-  o Basic basic
 }
 participant Regulator extends Member{
   o String industry
